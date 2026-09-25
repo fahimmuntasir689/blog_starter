@@ -1,24 +1,24 @@
 import { db } from "./prisma/db";
 
-// GET
+// GET - READ
 async function main() {
     const users = await db.orm.public.User.all()
     const posts = await db.orm.public.Post.all()
-    console.log(users)
-    console.log(posts)
+    console.log(users , posts)
+
 }
 main()
-//POST
+//POST - CREATE
 async function create() {
     const user = await db.orm.public.User.create({
-        email: "name@example.com",
-        username: "random name",
-        name: "name",
+        email: "shuvo@gmail.com",
+        username: "shuvo123",
+        name: "shuvo",
     });
 
     const post = await db.orm.public.Post.create({
-        title: "My First Prisma Post",
-        content: "I am learning Prisma 8!",
+        title: "Jibon Kotha",
+        content: "Jibon Alap",
         authorId: user.id,
     })
 
@@ -28,7 +28,7 @@ async function create() {
 
 // create()
 
-//UPDATE 
+//UPDATE - PATCH
 async function update() {
 
     const updatedUser = await db.orm.public.User
@@ -41,7 +41,7 @@ async function update() {
 
 }
 
-update()
+// update()
 
 // DELETE 
 
@@ -50,4 +50,4 @@ async function drop() {
         user.id.eq(1)).delete( )
     }
 
-drop()
+// drop()
